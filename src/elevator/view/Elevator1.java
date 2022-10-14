@@ -1,4 +1,4 @@
-package elevators.view;
+package elevator.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
