@@ -18,7 +18,7 @@ public class Elevator1 extends JPanel{
 
     public Elevator1(){
         try {
-            img = ImageIO.read(getClass().getResource("spritesheet.png"));
+            img = ImageIO.read(getClass().getResource("elevator-closed.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(Elevator1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,8 +36,8 @@ public class Elevator1 extends JPanel{
             if (this.getWidth() > 0) {
                 bima = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D  bima_graphics = bima.createGraphics();
-                bima_graphics.setColor(cream);
-                bima_graphics.fillRect(0, 0, bima.getWidth(), bima.getHeight());
+                //bima_graphics.setColor(cream);
+                //bima_graphics.fillRect(0, 0, bima.getWidth(), bima.getHeight());
                 bima_graphics.drawImage(img, 0, 0, null);
                 
             }
