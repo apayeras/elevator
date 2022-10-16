@@ -1,9 +1,37 @@
 package elevator;
 
-public class Elevator {
+import elevator.control.Control;
+import elevator.model.Model;
+import elevator.view.View;
+
+public class Elevator implements EventListener {
+    
+    private Model model;
+    private Control control;
+    private View view;
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        (new Elevator()).init();
     }
     
+    private void init(){
+        this.model = new Model(this);
+        this.control = new Control(this);
+        //this.view = new View(this);
+    }
+    
+    @Override
+    public void notify(Event e) {
+        switch (e.getEventType()){
+            case Model -> {
+                model.notify(e);
+            }
+            case View -> {
+                //view.notify(e);
+            }
+            case Control -> {
+                control.notify(e);
+            }
+        }
+    }
 }
