@@ -20,6 +20,10 @@ public class Elevator implements EventListener {
         //this.view = new View(this);
     }
     
+    public Model getModel() {
+        return this.model;
+    } 
+    
     @Override
     public void notify(Event e) {
         switch (e.getEventType()){

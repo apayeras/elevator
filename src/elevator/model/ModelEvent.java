@@ -25,8 +25,9 @@ public class ModelEvent extends Event {
         this.type = ModelEventType.DOORS;
     }
     
-    public ModelEvent(Direction direction) {
+    public ModelEvent(int currentFloor, Direction direction) {
         super(EventType.Model);
+        this.currentFloor = currentFloor;
         this.direction = direction;
         this.type = ModelEventType.DIRECTION;
     }
