@@ -1,12 +1,24 @@
 package elevator.view;
 
-public class View extends javax.swing.JFrame {
+import elevator.Elevator;
+import elevator.Event;
+import elevator.EventListener;
+import elevator.control.ControlEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+public class View extends javax.swing.JFrame implements EventListener{
 
     /**
      * Creates new form Vista
      */
-    public View() {
+    private Elevator elevator;
+    private ImageIcon icon = new ImageIcon("C:\\Users\\apaye\\Pictures\\delicat-calvo-blanc.png");
+    public View(Elevator elevator) {
         initComponents();
+        this.elevator = elevator;
+        this.setVisible(true);
+       
     }
 
     /**
@@ -18,12 +30,22 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
         jPanel1 = new Elevator1();
+        jPanel4 = new Elevator1();
         jPanel2 = new Elevator1();
         jPanel3 = new Elevator1();
-        jPanel4 = new Elevator1();
+        Down4 = new javax.swing.JButton();
+        Up3 = new javax.swing.JButton();
+        Down3 = new javax.swing.JButton();
+        Up2 = new javax.swing.JButton();
+        Down2 = new javax.swing.JButton();
+        Up1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(109, 150));
 
@@ -35,6 +57,19 @@ public class View extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(109, 150));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 109, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 150, Short.MAX_VALUE)
         );
 
@@ -64,17 +99,120 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 150, Short.MAX_VALUE)
         );
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(109, 150));
+        Down4.setBackground(new java.awt.Color(255, 255, 255));
+        Down4.setText("⬇");
+        Down4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Down4ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 109, Short.MAX_VALUE)
+        Up3.setBackground(new java.awt.Color(255, 255, 255));
+        Up3.setText("⬆");
+        Up3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Up3ActionPerformed(evt);
+            }
+        });
+
+        Down3.setBackground(new java.awt.Color(255, 255, 255));
+        Down3.setText("⬇");
+        Down3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Down3ActionPerformed(evt);
+            }
+        });
+
+        Up2.setBackground(new java.awt.Color(255, 255, 255));
+        Up2.setText("⬆");
+        Up2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Up2ActionPerformed(evt);
+            }
+        });
+
+        Down2.setBackground(new java.awt.Color(255, 255, 255));
+        Down2.setText("⬇");
+        Down2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Down2ActionPerformed(evt);
+            }
+        });
+
+        Up1.setBackground(new java.awt.Color(255, 255, 255));
+        Up1.setText("⬆");
+        Up1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Up1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-down.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Down4)
+                    .addComponent(Down2)
+                    .addComponent(Up2)
+                    .addComponent(Up1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Up3)
+                            .addComponent(Down3))
+                        .addGap(161, 161, 161)
+                        .addComponent(jButton1)))
+                .addContainerGap(674, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(Down4)))
+                .addGap(6, 6, 6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(Up3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Down3))
+                    .addComponent(jButton1))
+                .addGap(108, 108, 108)
+                .addComponent(Up2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Down2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Up1)
+                .addGap(85, 85, 85))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,68 +220,65 @@ public class View extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(549, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(487, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void Down4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Down4ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("ta mare");
+        elevator.notify(new ControlEvent(4, false));
+    }//GEN-LAST:event_Down4ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
+    private void Up3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Up3ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(3, true));
+    }//GEN-LAST:event_Up3ActionPerformed
+
+    private void Down3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Down3ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(3, false));
+    }//GEN-LAST:event_Down3ActionPerformed
+
+    private void Down2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Down2ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(2, false));
+    }//GEN-LAST:event_Down2ActionPerformed
+
+    private void Up2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Up2ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(2, true));
+    }//GEN-LAST:event_Up2ActionPerformed
+
+    private void Up1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Up1ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(1, true));
+    }//GEN-LAST:event_Up1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ImageIcon icon1 = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\on-button-down.png");
+        jButton1.setIcon(icon1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Down2;
+    private javax.swing.JButton Down3;
+    private javax.swing.JButton Down4;
+    private javax.swing.JButton Up1;
+    private javax.swing.JButton Up2;
+    private javax.swing.JButton Up3;
+    private javax.swing.JButton jButton1;
     /*
     private javax.swing.JPanel jPanel1;
     */
@@ -160,5 +295,11 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     */
     Elevator1 jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notify(Event e) {
+        System.out.println("calvo");
+    }
 }

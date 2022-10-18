@@ -17,7 +17,7 @@ public class Elevator implements EventListener {
     private void init(){
         this.model = new Model(this);
         this.control = new Control(this);
-        //this.view = new View(this);
+        this.view = new View(this);
     }
     
     public Model getModel() {
@@ -31,7 +31,7 @@ public class Elevator implements EventListener {
                 model.notify(e);
             }
             case View -> {
-                //view.notify(e);
+                view.notify(e);
             }
             case Control -> {
                 control.notify(e);

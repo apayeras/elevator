@@ -18,7 +18,7 @@ public class Elevator1 extends JPanel{
 
     public Elevator1(){
         try {
-            img = ImageIO.read(getClass().getResource("elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
+            img = ImageIO.read(getClass().getResource("img\\elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
         } catch (IOException ex) {
             Logger.getLogger(Elevator1.class.getName()).log(Level.SEVERE, null, ex);
         }
