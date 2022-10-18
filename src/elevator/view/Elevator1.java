@@ -18,7 +18,7 @@ public class Elevator1 extends JPanel{
 
     public Elevator1(){
         try {
-            img = ImageIO.read(getClass().getResource("elevator-closed.jpg"));
+            img = ImageIO.read(getClass().getResource("elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
         } catch (IOException ex) {
             Logger.getLogger(Elevator1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -32,6 +32,7 @@ public class Elevator1 extends JPanel{
     }
 
     public void paint(Graphics gr) {   
+        
         if (bima == null) {
             if (this.getWidth() > 0) {
                 bima = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);

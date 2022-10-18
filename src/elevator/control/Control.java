@@ -10,18 +10,21 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Control implements EventListener {
-    private Elevator elevator;
+public class Control extends Thread implements EventListener {
+    private final Elevator elevator;
     private static final int NUM_FLOORS = 4;
     private static int [] insideRequests = new int[NUM_FLOORS];
     private static Direction [] outsideRequests = new Direction[NUM_FLOORS];
     private static boolean wait;
+    private static boolean threadAlreadyRunning;
     
     public Control(Elevator elevator) {
         this.elevator = elevator;
     }
     
-    private void actionPerform() throws InterruptedException {
+    @Override
+    public void run(){
+        threadAlreadyRunning = true;
         while (checkRequests()) {
             Model model = elevator.getModel();
         
@@ -44,7 +47,11 @@ public class Control implements EventListener {
             // Wait
             if (model.openedDoors) {
                 wait = true;
-                sleep(2000);
+                try {
+                    sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 continue;
             }
 
@@ -84,6 +91,7 @@ public class Control implements EventListener {
                 continue;
             }
         }
+        threadAlreadyRunning = false;
     }
     
     private boolean checkRequests() {
@@ -125,10 +133,8 @@ public class Control implements EventListener {
         } else {
             insideRequests[event.buttonNum] = 1;
         }
-        try {
-            actionPerform();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+        if(!threadAlreadyRunning){
+            this.start();
         }
     }
 }
