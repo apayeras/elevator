@@ -182,9 +182,7 @@ public class View extends javax.swing.JFrame implements EventListener{
     private void Down4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Down4ActionPerformed
         // TODO add your handling code here:
         System.out.println("Down4 Action");
-        jPanel4.move(4);
-    
-        //elevator.notify(new ControlEvent(4, false));
+        elevator.notify(new ControlEvent(4, false));
     }//GEN-LAST:event_Down4ActionPerformed
 
     private void Up3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Up3ActionPerformed
@@ -238,5 +236,7 @@ public class View extends javax.swing.JFrame implements EventListener{
     @Override
     public void notify(Event e) {
         System.out.println("Notify ViewEvent");
+        ViewEvent event = (ViewEvent) e;
+        jPanel4.move(event.model.currentFloor);
     }
 }

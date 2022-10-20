@@ -11,8 +11,7 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//public class Control extends Thread implements EventListener {
-public class Control implements EventListener {
+public class Control extends Thread implements EventListener {
     private final Elevator elevator;
     private static final int NUM_FLOORS = 4;
     private static int [] insideRequests = new int[NUM_FLOORS];
@@ -26,7 +25,7 @@ public class Control implements EventListener {
         Arrays.fill(outsideRequests, Direction.IDLE); 
     }
     
-    //@Override
+    @Override
     public void run(){
         threadAlreadyRunning = true;
         Model model = elevator.getModel();
@@ -140,7 +139,7 @@ public class Control implements EventListener {
             insideRequests[event.buttonNum] = 1;
         }
         if(!threadAlreadyRunning){
-            run();
+            (new Thread(this)).start();
         }
     }
 }
