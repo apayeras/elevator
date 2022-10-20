@@ -29,8 +29,9 @@ public class Control implements EventListener {
     //@Override
     public void run(){
         threadAlreadyRunning = true;
-        while (checkRequests()) {
-            Model model = elevator.getModel();
+        Model model = elevator.getModel();
+        while (checkRequests() || model.openedDoors) {
+            //Model model = elevator.getModel();
         
             // Open door if floor has any request
             if (!model.openedDoors 

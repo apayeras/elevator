@@ -14,6 +14,7 @@ public class Model implements EventListener {
     
     public Model(Elevator elevator) {
         this.elevator = elevator;
+        this.direction = Direction.UP;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class Model implements EventListener {
         ModelEvent event = (ModelEvent) e;
         switch (event.type){
             case FLOOR -> {
-                this.currentFloor = event.currentFloor;
+                //this.currentFloor = event.currentFloor;
             }
             case DOORS -> {
                 this.openedDoors = event.openedDoors;
@@ -30,6 +31,7 @@ public class Model implements EventListener {
                 this.direction = event.direction;
             }
         }
+
         elevator.notify(new ViewEvent(this));
     }
 }

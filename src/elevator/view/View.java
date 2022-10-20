@@ -17,6 +17,9 @@ public class View extends javax.swing.JFrame implements EventListener{
     public View(Elevator elevator) {
         initComponents();
         this.elevator = elevator;
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+        jPanel3.setVisible(false);
         this.setVisible(true);
        
     }
@@ -234,7 +237,7 @@ public class View extends javax.swing.JFrame implements EventListener{
 
     private void Down4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Down4ActionPerformed
         // TODO add your handling code here:
-        System.out.println("ta mare");
+        System.out.println("Down4 Action");
         elevator.notify(new ControlEvent(4, false));
     }//GEN-LAST:event_Down4ActionPerformed
 
@@ -300,6 +303,6 @@ public class View extends javax.swing.JFrame implements EventListener{
 
     @Override
     public void notify(Event e) {
-        System.out.println("calvo");
+        System.out.println("Notify ViewEvent");
     }
 }
