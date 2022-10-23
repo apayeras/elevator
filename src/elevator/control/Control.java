@@ -6,6 +6,7 @@ import elevator.EventListener;
 import static elevator.control.ControlEvent.ControlEventType.*;
 import elevator.model.Model;
 import elevator.model.ModelEvent;
+import elevator.view.ViewEvent;
 import static java.lang.Thread.sleep;
 import java.util.Arrays;
 import java.util.logging.Level;
