@@ -58,7 +58,11 @@ public class View extends javax.swing.JFrame implements EventListener{
         );
 
         Down4.setBackground(new java.awt.Color(255, 255, 255));
-        Down4.setText("⬇");
+        Down4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/buttons/off-button-down.png"))); // NOI18N
+        Down4.setBorderPainted(false);
+        Down4.setContentAreaFilled(false);
+        Down4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Down4.setPreferredSize(new java.awt.Dimension(30, 30));
         Down4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Down4ActionPerformed(evt);
@@ -108,6 +112,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-down.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setMinimumSize(new java.awt.Dimension(36, 37));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -123,7 +128,7 @@ public class View extends javax.swing.JFrame implements EventListener{
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Down4)
+                    .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Down2)
                     .addComponent(Up2)
                     .addComponent(Up1)
@@ -132,15 +137,15 @@ public class View extends javax.swing.JFrame implements EventListener{
                             .addComponent(Up3)
                             .addComponent(Down3))
                         .addGap(161, 161, 161)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(674, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
-                .addComponent(Down4)
-                .addGap(12, 526, Short.MAX_VALUE))
+                .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 519, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,7 +153,7 @@ public class View extends javax.swing.JFrame implements EventListener{
                         .addComponent(Up3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Down3))
-                    .addComponent(jButton1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(108, 108, 108)
                 .addComponent(Up2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,10 +171,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(487, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
