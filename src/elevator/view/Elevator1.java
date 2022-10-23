@@ -43,7 +43,7 @@ public class Elevator1 extends JPanel{
                 Graphics2D  bima_graphics = bima.createGraphics();
                 bima_graphics.setColor(cream);
                 bima_graphics.fillRect(0, 0, bima.getWidth(), bima.getHeight());
-                bima_graphics.drawImage(img, 0, currentPosition, null);
+                bima_graphics.drawImage(img, 0, this.getHeight() - 150 - currentPosition, null);
                 
             }
         }
@@ -54,7 +54,7 @@ public class Elevator1 extends JPanel{
     public void move(int numFloor){
         
         if(this.numFloor < numFloor){
-            for(; this.currentPosition < (numFloor-1)*floorHeight; this.currentPosition+=1){
+            for(; this.currentPosition < numFloor*floorHeight; this.currentPosition+=1){
                 bima = null;
                 this.repaint();  
                 try {
@@ -64,7 +64,7 @@ public class Elevator1 extends JPanel{
                 }
             }
         } else {
-            for(; this.currentPosition > (numFloor-1)*floorHeight; this.currentPosition-=1){
+            for(; this.currentPosition > numFloor*floorHeight; this.currentPosition-=1){
                 bima = null;
                 this.repaint(); 
                 try {
