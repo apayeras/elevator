@@ -11,10 +11,12 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//public class Control implements EventListener {
 public class Control extends Thread implements EventListener {
     private final Elevator elevator;
     private static final int NUM_FLOORS = 4;
     private static boolean [] insideRequests = new boolean[NUM_FLOORS];
+    //private static Direction [] outsideRequests = new Direction[NUM_FLOORS];
     private static boolean [][] outsideRequests = new boolean[NUM_FLOORS][2];
     private static boolean wait;
     private static boolean threadAlreadyRunning;
@@ -22,7 +24,7 @@ public class Control extends Thread implements EventListener {
     public Control(Elevator elevator) {
         this.elevator = elevator;
         //Arrays.fill(insideRequests, false); 
-        //Arrays.fill(outsideRequests, false); 
+        //Arrays.fill(outsideRequests, Direction.IDLE); 
     }
     
     @Override
@@ -34,10 +36,11 @@ public class Control extends Thread implements EventListener {
         
             // Open door if floor has any request
             if (!model.openedDoors
-                && (insideRequests[model.currentFloor] || (outsideRequests[model.currentFloor][model.direction == Direction.DOWN? 0 : 1]))) {
+                && (insideRequests[model.currentFloor] || anyOutsideRequest(model.currentFloor, model.direction))) {
                 insideRequests[model.currentFloor] = false;
                 // canvis inside vista
-                outsideRequests[model.currentFloor][model.direction == Direction.DOWN? 0 : 1] = false;
+                //outsideRequests[model.currentFloor][model.direction == Direction.DOWN? 0 : 1] = false;
+                removeOutsideRequest(model.currentFloor, model.direction);
                 elevator.notify(new ModelEvent(true));
                 continue;
             }
@@ -63,7 +66,7 @@ public class Control extends Thread implements EventListener {
             // Go up
             if (model.direction == Direction.UP 
                     && !insideRequests[model.currentFloor] 
-                    && !(outsideRequests[model.currentFloor][0] || outsideRequests[model.currentFloor][1])
+                    && !outsideRequests[model.currentFloor][1]
                     && aboveRequests(model.currentFloor)) {
                 elevator.notify(new ModelEvent(model.currentFloor++));
                 continue;
@@ -72,7 +75,7 @@ public class Control extends Thread implements EventListener {
             // Go down
             if (model.direction == Direction.DOWN
                     && !insideRequests[model.currentFloor] 
-                    && !(outsideRequests[model.currentFloor][0] || outsideRequests[model.currentFloor][1])
+                    && !outsideRequests[model.currentFloor][0]
                     && belowRequests(model.currentFloor)) {
                 elevator.notify(new ModelEvent(model.currentFloor--));
                 continue;
@@ -125,6 +128,24 @@ public class Control extends Thread implements EventListener {
         }
         return false;
     }
+    
+    private boolean anyOutsideRequest(int currentFloor, Direction direction) {
+        if (outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1]
+                || (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) || (outsideRequests[currentFloor][1] && !belowRequests(currentFloor))) {
+            return true;
+        }
+        return false;
+    }
+    
+    private void removeOutsideRequest(int currentFloor, Direction direction) {
+        if (outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1]) {
+            outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1] = false;
+        } else if (outsideRequests[currentFloor][0]) {
+            outsideRequests[currentFloor][0] = false;
+        } else if (outsideRequests[currentFloor][1]) {
+            outsideRequests[currentFloor][1] = false;
+        }
+    }
 
     @Override
     public void notify(Event e) {
@@ -141,6 +162,7 @@ public class Control extends Thread implements EventListener {
         }
         if(!threadAlreadyRunning){
             (new Thread(this)).start();
+            //run();
         }
     }
 }
