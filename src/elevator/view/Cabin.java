@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class Elevator1 extends JPanel{
+public class Cabin extends JPanel{
     private BufferedImage bima;
     private Image img;
     private Color cream = new Color(96, 70, 59);
@@ -19,12 +19,12 @@ public class Elevator1 extends JPanel{
     private int currentPosition;
     private int numFloor;
 
-    public Elevator1(){
+    public Cabin(){
         this.currentPosition = 0; 
         try {
             img = ImageIO.read(getClass().getResource("img\\elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
         } catch (IOException ex) {
-            Logger.getLogger(Elevator1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Cabin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
