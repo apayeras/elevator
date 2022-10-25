@@ -3,18 +3,17 @@ package elevator.model;
 import elevator.Elevator;
 import elevator.Event;
 import elevator.EventListener;
-import elevator.control.Direction;
 import elevator.view.ViewEvent;
 
 public class Model implements EventListener {
-    private Elevator elevator;
+    private final Elevator elevator;
     public int currentFloor;
     public boolean openedDoors;
-    public Direction direction;
+    public boolean upDirection;
     
     public Model(Elevator elevator) {
         this.elevator = elevator;
-        this.direction = Direction.UP;
+        this.upDirection = true;
     }
 
     @Override
@@ -22,16 +21,14 @@ public class Model implements EventListener {
         ModelEvent event = (ModelEvent) e;
         switch (event.type){
             case FLOOR -> {
-                //this.currentFloor = event.currentFloor;
             }
             case DOORS -> {
                 this.openedDoors = event.openedDoors;
             }
             case DIRECTION -> {
-                this.direction = event.direction;
+                this.upDirection = event.upDirection;
             }
         }
-
         elevator.notify(new ViewEvent(this));
     }
 }

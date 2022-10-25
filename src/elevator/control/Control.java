@@ -33,15 +33,11 @@ public class Control extends Thread implements EventListener {
         threadAlreadyRunning = true;
         Model model = elevator.getModel();
         while (checkRequests() || model.openedDoors) {
-            //Model model = elevator.getModel();
         
             // Open door if floor has any request
             if (!model.openedDoors
-                && (insideRequests[model.currentFloor] || anyOutsideRequest(model.currentFloor, model.direction))) {
-                insideRequests[model.currentFloor] = false;
-                // canvis inside vista
-                //outsideRequests[model.currentFloor][model.direction == Direction.DOWN? 0 : 1] = false;
-                removeOutsideRequest(model.currentFloor, model.direction);
+                && (insideRequests[model.currentFloor] || anyOutsideRequest(model.currentFloor, model.upDirection))) {
+                removeRequest(model.currentFloor, model.upDirection);
                 elevator.notify(new ModelEvent(true));
                 continue;
             }
@@ -65,7 +61,7 @@ public class Control extends Thread implements EventListener {
             }
 
             // Go up
-            if (model.direction == Direction.UP 
+            if (model.upDirection 
                     && !insideRequests[model.currentFloor] 
                     && !outsideRequests[model.currentFloor][1]
                     && aboveRequests(model.currentFloor)) {
@@ -74,7 +70,7 @@ public class Control extends Thread implements EventListener {
             }
 
             // Go down
-            if (model.direction == Direction.DOWN
+            if (!model.upDirection
                     && !insideRequests[model.currentFloor] 
                     && !outsideRequests[model.currentFloor][0]
                     && belowRequests(model.currentFloor)) {
@@ -83,20 +79,20 @@ public class Control extends Thread implements EventListener {
             }
 
             // Change direction and go down
-            if (model.direction == Direction.UP
+            if (model.upDirection
                     && !insideRequests[model.currentFloor]
                     && !(outsideRequests[model.currentFloor][0] || outsideRequests[model.currentFloor][1])
                     && belowRequests(model.currentFloor)) {
-                elevator.notify(new ModelEvent(model.currentFloor--, Direction.DOWN));
+                elevator.notify(new ModelEvent(model.currentFloor--, false));
                 continue;
             }
 
             // Change direction and go up
-            if (model.direction == Direction.DOWN
+            if (!model.upDirection
                     && !insideRequests[model.currentFloor]
                     && !(outsideRequests[model.currentFloor][0] || outsideRequests[model.currentFloor][1])
                     && aboveRequests(model.currentFloor)) {
-                elevator.notify(new ModelEvent(model.currentFloor++, Direction.UP));
+                elevator.notify(new ModelEvent(model.currentFloor++, true));
                 continue;
             }
         }
@@ -130,21 +126,29 @@ public class Control extends Thread implements EventListener {
         return false;
     }
     
-    private boolean anyOutsideRequest(int currentFloor, Direction direction) {
-        if (outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1]
+    private boolean anyOutsideRequest(int currentFloor, boolean upDirection) {
+        if (outsideRequests[currentFloor][upDirection? 1 : 0]
                 || (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) || (outsideRequests[currentFloor][1] && !belowRequests(currentFloor))) {
             return true;
         }
         return false;
     }
     
-    private void removeOutsideRequest(int currentFloor, Direction direction) {
-        if (outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1]) {
-            outsideRequests[currentFloor][direction == Direction.DOWN? 0 : 1] = false;
+    private void removeRequest(int currentFloor, boolean upDirection) {
+        if (outsideRequests[currentFloor][upDirection? 1 : 0]) {
+            outsideRequests[currentFloor][upDirection? 1 : 0] = false;
+            elevator.notify(new ViewEvent(currentFloor, upDirection));
         } else if (outsideRequests[currentFloor][0]) {
             outsideRequests[currentFloor][0] = false;
+            elevator.notify(new ViewEvent(currentFloor, false));
         } else if (outsideRequests[currentFloor][1]) {
             outsideRequests[currentFloor][1] = false;
+            elevator.notify(new ViewEvent(currentFloor, true));
+        }
+        
+        if (insideRequests[currentFloor]) {
+            insideRequests[currentFloor] = false;
+            elevator.notify(new ViewEvent(currentFloor));
         }
     }
 
@@ -163,7 +167,6 @@ public class Control extends Thread implements EventListener {
         }
         if(!threadAlreadyRunning){
             (new Thread(this)).start();
-            //run();
         }
     }
 }

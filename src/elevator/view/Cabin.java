@@ -13,16 +13,19 @@ import javax.swing.JPanel;
 
 public class Cabin extends JPanel{
     private BufferedImage bima;
-    private Image img;
+    private Image closedDoor;
+    private Image openedDoor;
     private Color cream = new Color(96, 70, 59);
     private final int floorHeight = 150;
     private int currentPosition;
     private int numFloor;
+    private boolean doorStatus;
 
     public Cabin(){
         this.currentPosition = 0; 
         try {
-            img = ImageIO.read(getClass().getResource("img\\elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
+            openedDoor = ImageIO.read(getClass().getResource("img\\elevator-opened.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
+            closedDoor = ImageIO.read(getClass().getResource("img\\elevator-closed.jpg")).getScaledInstance(109, 150, BufferedImage.SCALE_DEFAULT);
         } catch (IOException ex) {
             Logger.getLogger(Cabin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -43,15 +46,19 @@ public class Cabin extends JPanel{
                 Graphics2D  bima_graphics = bima.createGraphics();
                 bima_graphics.setColor(cream);
                 bima_graphics.fillRect(0, 0, bima.getWidth(), bima.getHeight());
-                bima_graphics.drawImage(img, 0, this.getHeight() - 150 - currentPosition, null);
-                
+                bima_graphics.drawImage(doorStatus ? openedDoor : closedDoor , 0, this.getHeight() - 150 - currentPosition, null);
             }
         }
         gr.drawImage(bima, 0, 0, this);
 
     }
     
-    public void move(int numFloor){
+    public void refreshCabin(boolean openedDoor, int numFloor){
+        if(doorStatus != openedDoor){
+            this.doorStatus = openedDoor;
+            bima = null;
+            this.repaint();  
+        }
         
         if(this.numFloor < numFloor){
             for(; this.currentPosition < numFloor*floorHeight; this.currentPosition+=1){
@@ -74,8 +81,6 @@ public class Cabin extends JPanel{
                 }
             }
         }
-        
         this.numFloor = numFloor;
     }
-    
 }

@@ -1,7 +1,7 @@
 package elevator.model;
 
 import elevator.Event;
-import elevator.control.Direction;
+//import elevator.control.Direction;
 
 /**
  *
@@ -10,14 +10,8 @@ import elevator.control.Direction;
 public class ModelEvent extends Event {
     public int currentFloor;
     public boolean openedDoors;
-    public Direction direction;
+    public boolean upDirection;
     public ModelEventType type;
-    
-    public ModelEvent(int currentFloor) {
-        super(EventType.Model);
-        this.currentFloor = currentFloor;
-        this.type = ModelEventType.FLOOR;
-    }
     
     public ModelEvent(boolean openedDoors) {
         super(EventType.Model);
@@ -25,10 +19,16 @@ public class ModelEvent extends Event {
         this.type = ModelEventType.DOORS;
     }
     
-    public ModelEvent(int currentFloor, Direction direction) {
+    public ModelEvent(int currentFloor) {
         super(EventType.Model);
         this.currentFloor = currentFloor;
-        this.direction = direction;
+        this.type = ModelEventType.FLOOR;
+    }
+    
+    public ModelEvent(int currentFloor, boolean upDirection) {
+        super(EventType.Model);
+        this.currentFloor = currentFloor;
+        this.upDirection = upDirection;
         this.type = ModelEventType.DIRECTION;
     }
             

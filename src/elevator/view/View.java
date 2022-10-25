@@ -42,6 +42,12 @@ public class View extends javax.swing.JFrame implements EventListener{
         Up2 = new javax.swing.JButton();
         Down2 = new javax.swing.JButton();
         Up1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        insidePanel = new javax.swing.JPanel();
+        Floor4 = new javax.swing.JButton();
+        Floor3 = new javax.swing.JButton();
+        Floor2 = new javax.swing.JButton();
+        Floor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +70,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         Down4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-down.png"))); // NOI18N
         Down4.setBorderPainted(false);
         Down4.setContentAreaFilled(false);
-        Down4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Down4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Down4.setPreferredSize(new java.awt.Dimension(30, 30));
         Down4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +82,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         Up3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-up.png"))); // NOI18N
         Up3.setBorderPainted(false);
         Up3.setContentAreaFilled(false);
-        Up3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Up3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Up3.setPreferredSize(new java.awt.Dimension(30, 30));
         Up3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +94,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         Down3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-down.png"))); // NOI18N
         Down3.setBorderPainted(false);
         Down3.setContentAreaFilled(false);
-        Down3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Down3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Down3.setFocusPainted(false);
         Down3.setPreferredSize(new java.awt.Dimension(30, 30));
         Down3.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +107,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         Up2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-up.png"))); // NOI18N
         Up2.setBorderPainted(false);
         Up2.setContentAreaFilled(false);
-        Up2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Up2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Up2.setPreferredSize(new java.awt.Dimension(30, 30));
         Up2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +119,7 @@ public class View extends javax.swing.JFrame implements EventListener{
         Down2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-down.png"))); // NOI18N
         Down2.setBorderPainted(false);
         Down2.setContentAreaFilled(false);
-        Down2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Down2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Down2.setPreferredSize(new java.awt.Dimension(30, 30));
         Down2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,13 +131,64 @@ public class View extends javax.swing.JFrame implements EventListener{
         Up1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/off-button-up.png"))); // NOI18N
         Up1.setBorderPainted(false);
         Up1.setContentAreaFilled(false);
-        Up1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Up1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Up1.setPreferredSize(new java.awt.Dimension(30, 30));
         Up1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Up1ActionPerformed(evt);
             }
         });
+
+        insidePanel.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
+
+        Floor4.setText("4");
+        Floor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Floor4ActionPerformed(evt);
+            }
+        });
+        insidePanel.add(Floor4);
+
+        Floor3.setText("3");
+        Floor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Floor3ActionPerformed(evt);
+            }
+        });
+        insidePanel.add(Floor3);
+
+        Floor2.setText("2");
+        Floor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Floor2ActionPerformed(evt);
+            }
+        });
+        insidePanel.add(Floor2);
+
+        Floor1.setText("1");
+        Floor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Floor1ActionPerformed(evt);
+            }
+        });
+        insidePanel.add(Floor1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addComponent(insidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(insidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -148,7 +205,9 @@ public class View extends javax.swing.JFrame implements EventListener{
                     .addComponent(Down3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cabin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(820, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,8 +226,13 @@ public class View extends javax.swing.JFrame implements EventListener{
                 .addComponent(Up1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(cabin, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cabin, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -216,12 +280,36 @@ public class View extends javax.swing.JFrame implements EventListener{
         elevator.notify(new ControlEvent(1, true));
     }//GEN-LAST:event_Up1ActionPerformed
 
+    private void Floor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor4ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(4));
+    }//GEN-LAST:event_Floor4ActionPerformed
+
+    private void Floor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor3ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(3));
+    }//GEN-LAST:event_Floor3ActionPerformed
+
+    private void Floor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor2ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(2));
+    }//GEN-LAST:event_Floor2ActionPerformed
+
+    private void Floor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor1ActionPerformed
+        // TODO add your handling code here:
+        elevator.notify(new ControlEvent(1));
+    }//GEN-LAST:event_Floor1ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Down2;
     private javax.swing.JButton Down3;
     private javax.swing.JButton Down4;
+    private javax.swing.JButton Floor1;
+    private javax.swing.JButton Floor2;
+    private javax.swing.JButton Floor3;
+    private javax.swing.JButton Floor4;
     private javax.swing.JButton Up1;
     private javax.swing.JButton Up2;
     private javax.swing.JButton Up3;
@@ -229,6 +317,8 @@ public class View extends javax.swing.JFrame implements EventListener{
     private javax.swing.JPanel cabin;
     */
     Cabin cabin;
+    private javax.swing.JPanel insidePanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 
@@ -236,16 +326,18 @@ public class View extends javax.swing.JFrame implements EventListener{
     public void notify(Event e) {
         ViewEvent event = (ViewEvent) e;
         switch(event.type){
-            case STATE -> cabin.move(event.model.currentFloor);
+            case STATE -> {
+                cabin.refreshCabin(event.model.openedDoors, event.model.currentFloor);
+            }
             case OUTSIDE_REQUESTS -> {
                 if(event.up){
-                    switch (event.floor) {
+                    switch (event.floor+1) {
                         case 1 -> Up1.setIcon(arrowUpOff);
                         case 2 -> Up2.setIcon(arrowUpOff);
                         case 3 -> Up3.setIcon(arrowUpOff);
                     }
                 } else {
-                    switch (event.floor) {
+                    switch (event.floor+1) {
                         case 2 -> Down2.setIcon(arrowDownOff);
                         case 3 -> Down3.setIcon(arrowDownOff);
                         case 4 -> Down4.setIcon(arrowDownOff);
@@ -253,9 +345,8 @@ public class View extends javax.swing.JFrame implements EventListener{
                 }
             }
             case INSIDE_REQUESTS -> {
+                System.out.println("INSIDE REQUEST");
             }
-            
         }
-        
     }
 }
