@@ -17,6 +17,8 @@ public class View extends javax.swing.JFrame implements EventListener{
     private final ImageIcon arrowDownOn = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\on-button-down.png");
     private final ImageIcon arrowUpOff = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\off-button-up.png");
     private final ImageIcon arrowUpOn = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\on-button-up.png");
+    private final ImageIcon buttonOn = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\red-button.png");
+    private final ImageIcon buttonOff = new ImageIcon(System.getProperty("user.dir")+"\\src\\elevator\\view\\img\\gray-button.png");
     
     public View(Elevator elevator) {
         initComponents();
@@ -48,6 +50,12 @@ public class View extends javax.swing.JFrame implements EventListener{
         Floor3 = new javax.swing.JButton();
         Floor2 = new javax.swing.JButton();
         Floor1 = new javax.swing.JButton();
+        labelsPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,7 +149,10 @@ public class View extends javax.swing.JFrame implements EventListener{
 
         insidePanel.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
 
-        Floor4.setText("4");
+        Floor4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/gray-button.png"))); // NOI18N
+        Floor4.setMaximumSize(new java.awt.Dimension(30, 6));
+        Floor4.setMinimumSize(new java.awt.Dimension(30, 6));
+        Floor4.setPreferredSize(new java.awt.Dimension(30, 6));
         Floor4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Floor4ActionPerformed(evt);
@@ -149,7 +160,10 @@ public class View extends javax.swing.JFrame implements EventListener{
         });
         insidePanel.add(Floor4);
 
-        Floor3.setText("3");
+        Floor3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/gray-button.png"))); // NOI18N
+        Floor3.setMaximumSize(new java.awt.Dimension(30, 6));
+        Floor3.setMinimumSize(new java.awt.Dimension(30, 6));
+        Floor3.setPreferredSize(new java.awt.Dimension(30, 6));
         Floor3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Floor3ActionPerformed(evt);
@@ -157,7 +171,10 @@ public class View extends javax.swing.JFrame implements EventListener{
         });
         insidePanel.add(Floor3);
 
-        Floor2.setText("2");
+        Floor2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/gray-button.png"))); // NOI18N
+        Floor2.setMaximumSize(new java.awt.Dimension(30, 6));
+        Floor2.setMinimumSize(new java.awt.Dimension(30, 6));
+        Floor2.setPreferredSize(new java.awt.Dimension(30, 6));
         Floor2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Floor2ActionPerformed(evt);
@@ -165,7 +182,10 @@ public class View extends javax.swing.JFrame implements EventListener{
         });
         insidePanel.add(Floor2);
 
-        Floor1.setText("1");
+        Floor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/gray-button.png"))); // NOI18N
+        Floor1.setMaximumSize(new java.awt.Dimension(30, 6));
+        Floor1.setMinimumSize(new java.awt.Dimension(30, 6));
+        Floor1.setPreferredSize(new java.awt.Dimension(30, 6));
         Floor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Floor1ActionPerformed(evt);
@@ -173,67 +193,106 @@ public class View extends javax.swing.JFrame implements EventListener{
         });
         insidePanel.add(Floor1);
 
+        labelsPanel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelsPanel.setLayout(new java.awt.GridLayout(0, 1));
+
+        jLabel1.setText("4");
+        labelsPanel.add(jLabel1);
+
+        jLabel2.setText("3");
+        labelsPanel.add(jLabel2);
+
+        jLabel3.setText("2");
+        labelsPanel.add(jLabel3);
+
+        jLabel4.setText("1");
+        labelsPanel.add(jLabel4);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addComponent(insidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(80, Short.MAX_VALUE)
+                    .addComponent(labelsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(109, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(insidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(insidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addGap(117, 117, 117))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(labelsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(123, Short.MAX_VALUE)))
         );
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elevator/view/img/cloud.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setMaximumSize(new java.awt.Dimension(30, 6));
+        jLabel5.setMinimumSize(new java.awt.Dimension(30, 6));
+        jLabel5.setPreferredSize(new java.awt.Dimension(30, 6));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Down2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Up2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Up1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Up3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Down3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(193, 193, 193)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Up3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Down3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Up1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Down2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Up2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cabin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addComponent(Up3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Down3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Up2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Down2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Up1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(Down4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(Up3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Down3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(Up2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Down2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(Up1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(cabin, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(2667, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,21 +341,25 @@ public class View extends javax.swing.JFrame implements EventListener{
 
     private void Floor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor4ActionPerformed
         // TODO add your handling code here:
+        Floor4.setIcon(buttonOn);
         elevator.notify(new ControlEvent(4));
     }//GEN-LAST:event_Floor4ActionPerformed
 
     private void Floor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor3ActionPerformed
         // TODO add your handling code here:
+        Floor3.setIcon(buttonOn);
         elevator.notify(new ControlEvent(3));
     }//GEN-LAST:event_Floor3ActionPerformed
 
     private void Floor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor2ActionPerformed
         // TODO add your handling code here:
+        Floor2.setIcon(buttonOn);
         elevator.notify(new ControlEvent(2));
     }//GEN-LAST:event_Floor2ActionPerformed
 
     private void Floor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Floor1ActionPerformed
         // TODO add your handling code here:
+        Floor1.setIcon(buttonOn);
         elevator.notify(new ControlEvent(1));
     }//GEN-LAST:event_Floor1ActionPerformed
 
@@ -318,8 +381,14 @@ public class View extends javax.swing.JFrame implements EventListener{
     */
     Cabin cabin;
     private javax.swing.JPanel insidePanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel labelsPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -345,7 +414,12 @@ public class View extends javax.swing.JFrame implements EventListener{
                 }
             }
             case INSIDE_REQUESTS -> {
-                System.out.println("INSIDE REQUEST");
+                switch (event.floor+1) {
+                    case 1 -> Floor1.setIcon(buttonOff);
+                    case 2 -> Floor2.setIcon(buttonOff);
+                    case 3 -> Floor3.setIcon(buttonOff);
+                    case 4 -> Floor4.setIcon(buttonOff);
+                }
             }
         }
     }
