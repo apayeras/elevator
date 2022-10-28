@@ -15,7 +15,7 @@ public class Cabin extends JPanel{
     private BufferedImage bima;
     private Image closedDoor;
     private Image openedDoor;
-    private Color cream = new Color(96, 70, 59);
+    private Color cream = new Color(184, 186, 186);
     private final int floorHeight = 150;
     private int currentPosition;
     private int numFloor;
@@ -46,7 +46,7 @@ public class Cabin extends JPanel{
                 Graphics2D  bima_graphics = bima.createGraphics();
                 bima_graphics.setColor(cream);
                 bima_graphics.fillRect(0, 0, bima.getWidth(), bima.getHeight());
-                bima_graphics.drawImage(doorStatus ? openedDoor : closedDoor , 0, this.getHeight() - 150 - currentPosition, null);
+                bima_graphics.drawImage(doorStatus ? openedDoor : closedDoor , 15, this.getHeight() - 150 - currentPosition, null);
             }
         }
         gr.drawImage(bima, 0, 0, this);
