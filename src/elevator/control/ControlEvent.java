@@ -6,10 +6,6 @@ package elevator.control;
 
 import elevator.Event;
 
-/**
- *
- * @author usuario
- */
 public class ControlEvent extends Event {
     public int buttonNum;
     public boolean up;

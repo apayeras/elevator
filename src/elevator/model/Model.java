@@ -13,6 +13,7 @@ public class Model implements EventListener {
     
     public Model(Elevator elevator) {
         this.elevator = elevator;
+        // DIRECTION INITIALIZE UPWARDS
         this.upDirection = true;
     }
 
