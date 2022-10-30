@@ -469,8 +469,11 @@ public class View extends javax.swing.JFrame implements EventListener{
         ViewEvent event = (ViewEvent) e;
         switch(event.type){
             case STATE -> {
+                // REFRESH THE ELEVATOR CABIN
                 cabin.refreshCabin(event.model.openedDoors, event.model.currentFloor);
             }
+            // SET OFF LIGHT ICONS FROM OUTSIDE BUTTONS
+            // ADDING +1 TO FLOOR TO ADJUST TO THE VIEW
             case OUTSIDE_REQUESTS -> {
                 if(event.up){
                     switch (event.floor+1) {
@@ -486,6 +489,8 @@ public class View extends javax.swing.JFrame implements EventListener{
                     }
                 }
             }
+            // SET OFF LIGHT ICONS FROM OUTSIDE BUTTONS
+            // ADDING +1 TO FLOOR TO ADJUST TO THE VIEW
             case INSIDE_REQUESTS -> {
                 switch (event.floor+1) {
                     case 1 -> Floor1.setBackground(new Color(255,255,255));

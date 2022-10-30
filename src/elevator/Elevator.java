@@ -4,6 +4,13 @@ import elevator.control.Control;
 import elevator.model.Model;
 import elevator.view.View;
 
+/**
+ *
+ * @author 
+ * Sergio Moreno Pérez
+ * Antoni Payeras Munar
+ */
+
 public class Elevator implements EventListener {
     
     private Model model;

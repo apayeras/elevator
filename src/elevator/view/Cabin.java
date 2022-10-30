@@ -53,6 +53,7 @@ public class Cabin extends JPanel{
 
     }
     
+    // REFRESH FLOOR AND DOORS OF THE CABIN
     public void refreshCabin(boolean openedDoor, int numFloor){
         if(doorStatus != openedDoor){
             this.doorStatus = openedDoor;

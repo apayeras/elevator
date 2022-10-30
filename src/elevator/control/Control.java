@@ -120,6 +120,7 @@ public class Control extends Thread implements EventListener {
         return false;
     }
     
+    // check if there is any other outside request
     private boolean anyOutsideRequest(int currentFloor, boolean upDirection) {
         return outsideRequests[currentFloor][upDirection? 1 : 0]
                 || (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) || (outsideRequests[currentFloor][1] && !belowRequests(currentFloor));
