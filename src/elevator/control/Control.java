@@ -8,24 +8,19 @@ import elevator.model.Model;
 import elevator.model.ModelEvent;
 import elevator.view.ViewEvent;
 import static java.lang.Thread.sleep;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//public class Control implements EventListener {
 public class Control extends Thread implements EventListener {
     private final Elevator elevator;
     private static final int NUM_FLOORS = 4;
     private static boolean [] insideRequests = new boolean[NUM_FLOORS];
-    //private static Direction [] outsideRequests = new Direction[NUM_FLOORS];
     private static boolean [][] outsideRequests = new boolean[NUM_FLOORS][2];
     private static boolean wait;
     private static boolean threadAlreadyRunning;
     
     public Control(Elevator elevator) {
         this.elevator = elevator;
-        //Arrays.fill(insideRequests, false); 
-        //Arrays.fill(outsideRequests, Direction.IDLE); 
     }
     
     @Override
@@ -93,7 +88,6 @@ public class Control extends Thread implements EventListener {
                     && !(outsideRequests[model.currentFloor][0] || outsideRequests[model.currentFloor][1])
                     && aboveRequests(model.currentFloor)) {
                 elevator.notify(new ModelEvent(model.currentFloor++, true));
-                continue;
             }
         }
         threadAlreadyRunning = false;
@@ -127,11 +121,8 @@ public class Control extends Thread implements EventListener {
     }
     
     private boolean anyOutsideRequest(int currentFloor, boolean upDirection) {
-        if (outsideRequests[currentFloor][upDirection? 1 : 0]
-                || (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) || (outsideRequests[currentFloor][1] && !belowRequests(currentFloor))) {
-            return true;
-        }
-        return false;
+        return outsideRequests[currentFloor][upDirection? 1 : 0]
+                || (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) || (outsideRequests[currentFloor][1] && !belowRequests(currentFloor));
     }
     
     private void removeRequest(int currentFloor, boolean upDirection) {

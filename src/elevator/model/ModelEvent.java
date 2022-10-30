@@ -1,12 +1,7 @@
 package elevator.model;
 
 import elevator.Event;
-//import elevator.control.Direction;
 
-/**
- *
- * @author usuario
- */
 public class ModelEvent extends Event {
     public int currentFloor;
     public boolean openedDoors;

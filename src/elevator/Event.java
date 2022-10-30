@@ -8,7 +8,7 @@ public abstract class Event {
         Control
     }
 
-    private EventType type;
+    private final EventType type;
 
     public Event(EventType type){
         this.type = type;
