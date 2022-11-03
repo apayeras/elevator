@@ -39,8 +39,11 @@ public class Control extends Thread implements EventListener {
 
             // Close door if the elevator is done waiting
             if (model.openedDoors && wait) {
-                elevator.notify(new ModelEvent(false));
                 wait = false;
+                if (anyOutsideRequest(model.currentFloor, model.upDirection)) 
+                    removeRequest(model.currentFloor, model.upDirection);
+                else 
+                    elevator.notify(new ModelEvent(false));
                 continue;
             }
 
@@ -130,10 +133,10 @@ public class Control extends Thread implements EventListener {
         if (outsideRequests[currentFloor][upDirection? 1 : 0]) {
             outsideRequests[currentFloor][upDirection? 1 : 0] = false;
             elevator.notify(new ViewEvent(currentFloor, upDirection));
-        } else if (outsideRequests[currentFloor][0]) {
+        } else if (outsideRequests[currentFloor][0] && !aboveRequests(currentFloor)) {
             outsideRequests[currentFloor][0] = false;
             elevator.notify(new ViewEvent(currentFloor, false));
-        } else if (outsideRequests[currentFloor][1]) {
+        } else if (outsideRequests[currentFloor][1] && !belowRequests(currentFloor)) {
             outsideRequests[currentFloor][1] = false;
             elevator.notify(new ViewEvent(currentFloor, true));
         }
